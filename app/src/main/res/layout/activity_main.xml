@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey"
+    tools:context=".view.MainActivity"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:padding="12dp"
+    >
+
+    <!-- App Title -->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:id="@+id/tvAppTitle"
+            android:src="@drawable/sniff"
+            android:layout_centerInParent="true">
+        </ImageView>
+    </RelativeLayout>
+
+    <!-- Input Form -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/form_bg"
+        android:padding="12dp"
+        android:layout_marginHorizontal="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="Username:"
+            android:textSize="14sp"
+            android:id="@+id/tvUsername"
+            android:textColor="@color/white"
+            android:fontFamily="@font/inter"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:textStyle="bold">
+        </TextView>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@drawable/search_box_bg"
+            android:layout_below="@id/tvUsername"
+            android:id="@+id/etUsername"
+            android:textSize="14sp"
+            android:padding="4dp"
+            android:hint="Enter username..."
+            android:textColorHint="#888888"
+            >
+        </EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Posts:"
+            android:textSize="14sp"
+            android:id="@+id/tvNumPosts"
+            android:textColor="@color/white"
+            android:fontFamily="@font/inter"
+            android:layout_marginStart="8dp"
+            android:layout_below="@id/etUsername"
+            android:textStyle="bold">
+        </TextView>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@drawable/search_box_bg"
+            android:layout_below="@id/tvNumPosts"
+            android:id="@+id/etNumPosts"
+            android:textSize="14sp"
+            android:padding="4dp"
+            android:inputType="number"
+            android:hint="Enter the number of posts you want to sniff..."
+            android:textColorHint="#888888">
+        </EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Keyword:"
+            android:textSize="14sp"
+            android:id="@+id/tvKeyword"
+            android:textColor="@color/white"
+            android:fontFamily="@font/inter"
+            android:layout_marginStart="8dp"
+            android:layout_below="@id/etNumPosts">
+        </TextView>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@drawable/search_box_bg"
+            android:layout_below="@id/tvKeyword"
+            android:id="@+id/etKeyword"
+            android:textSize="14sp"
+            android:padding="4dp"
+            android:hint="Enter a keyword to search for..."
+            android:textColorHint="#888888"
+            android:imeOptions="actionSearch">
+        </EditText>
+
+        <!-- Search Button -->
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/etKeyword"
+            android:layout_margin="8dp"
+            android:text="Sniff!"
+            android:textColor="@color/white"
+            android:backgroundTint="#9440dd"
+            android:padding="12dp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/inter">
+        </Button>
+
+    </RelativeLayout>
+
+    <!-- RecyclerView Container -->
+    <RelativeLayout
+        android:id="@+id/recyclerContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/form_bg"
+        android:padding="12dp"
+        android:layout_margin="8dp"
+        android:visibility="gone">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            tools:listitem="@layout/item_post"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
+
+</LinearLayout>
