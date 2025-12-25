@@ -1,42 +1,38 @@
-*.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
-local.properties
-
-# Log/OS Files
-*.log
-
-# Android Studio generated files and folders
-captures/
-.externalNativeBuild/
-.cxx/
-*.aab
-*.apk
-output-metadata.json
-
-# IntelliJ
+# Android Studio & IntelliJ
 *.iml
 .idea/
+.idea/caches
+.idea/libraries
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
 misc.xml
 deploymentTargetDropDown.xml
 render.experimental.xml
+
+# Gradle
+.gradle
+/build
+/externalNativeBuild
+.cxx
+
+# OS Files
+.DS_Store
+*.log
+
+# Android output files
+captures/
+*.apk
+*.aab
+output-metadata.json
 
 # Keystore files
 *.jks
 *.keystore
 
-# Google Services (e.g. APIs or Firebase)
+# Local config files
+local.properties
 google-services.json
 
 # Android Profiling
@@ -46,4 +42,3 @@ google-services.json
 .env
 __pycache__/
 *.pyc
-
