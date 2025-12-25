@@ -1,4 +1,4 @@
-# Sniff 👟
+# Sniff 👃
 
 Find what fits on Instagram — without endless scrolling
 
