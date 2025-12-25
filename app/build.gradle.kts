@@ -1,9 +1,11 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-parcelize") // Add this line
 }
 
 android {
+
     namespace = "com.ahmedProjects.captionscraperapp"
     compileSdk = 36
 
@@ -13,11 +15,20 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
+
+        val baseUrl = project.findProperty("BASE_URL") as? String
+            ?: throw GradleException("BASE_URL not found in gradle.properties")
+
+        buildConfigField("String", "BASE_URL", "\"$baseUrl\"")
+
+
     }
 
     buildFeatures {
+        buildConfig = true
         viewBinding = true
     }
+
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17

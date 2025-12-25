@@ -30,6 +30,7 @@ class CaptionPresenter(private val view: CaptionView) {
                     // Filter posts containing the keyword
                     val filteredPosts = response.body()!!.posts.filter {
                         it.caption?.lowercase()?.contains(keyword) == true
+
                     }
                     view.onResultSuccess(com.ahmedProjects.captionscraperapp.model.CaptionResponse(
                         status = response.body()!!.status,

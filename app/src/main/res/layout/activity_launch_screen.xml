@@ -6,7 +6,7 @@
     android:id="@+id/launchLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey"
+    android:background="@color/white"
     tools:context=".launch_screen"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
@@ -16,7 +16,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="130dp"
-        android:src="@drawable/sniff"
+        android:src="@drawable/sniff_splash"
         android:layout_centerInParent="true">
 
     </ImageView>

@@ -1,159 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+
+
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey"
-    tools:context=".view.MainActivity"
-    android:fitsSystemWindows="true"
-    android:orientation="vertical"
-    android:padding="12dp"
-    >
+    android:background="@android:color/white"
+    android:fillViewport="true"
+    tools:context=".view.MainActivity">
 
-    <!-- App Title -->
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:id="@+id/tvAppTitle"
-            android:src="@drawable/sniff"
-            android:layout_centerInParent="true">
-        </ImageView>
-    </RelativeLayout>
-
-    <!-- Input Form -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/form_bg"
-        android:padding="12dp"
-        android:layout_marginHorizontal="8dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:text="Username:"
-            android:textSize="14sp"
-            android:id="@+id/tvUsername"
-            android:textColor="@color/white"
-            android:fontFamily="@font/inter"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="8dp"
-            android:textStyle="bold">
-        </TextView>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@drawable/search_box_bg"
-            android:layout_below="@id/tvUsername"
-            android:id="@+id/etUsername"
-            android:textSize="14sp"
-            android:padding="4dp"
-            android:hint="Enter username..."
-            android:textColorHint="#888888"
-            >
-        </EditText>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Posts:"
-            android:textSize="14sp"
-            android:id="@+id/tvNumPosts"
-            android:textColor="@color/white"
-            android:fontFamily="@font/inter"
-            android:layout_marginStart="8dp"
-            android:layout_below="@id/etUsername"
-            android:textStyle="bold">
-        </TextView>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@drawable/search_box_bg"
-            android:layout_below="@id/tvNumPosts"
-            android:id="@+id/etNumPosts"
-            android:textSize="14sp"
-            android:padding="4dp"
-            android:inputType="number"
-            android:hint="Enter the number of posts you want to sniff..."
-            android:textColorHint="#888888">
-        </EditText>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Keyword:"
-            android:textSize="14sp"
-            android:id="@+id/tvKeyword"
-            android:textColor="@color/white"
-            android:fontFamily="@font/inter"
-            android:layout_marginStart="8dp"
-            android:layout_below="@id/etNumPosts">
-        </TextView>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@drawable/search_box_bg"
-            android:layout_below="@id/tvKeyword"
-            android:id="@+id/etKeyword"
-            android:textSize="14sp"
-            android:padding="4dp"
-            android:hint="Enter a keyword to search for..."
-            android:textColorHint="#888888"
-            android:imeOptions="actionSearch">
-        </EditText>
-
-        <!-- Search Button -->
-        <Button
-            android:id="@+id/btnSearch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/etKeyword"
-            android:layout_margin="8dp"
-            android:text="Sniff!"
-            android:textColor="@color/white"
-            android:backgroundTint="#9440dd"
-            android:padding="12dp"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/inter">
-        </Button>
-
-    </RelativeLayout>
-
-    <!-- RecyclerView Container -->
-    <RelativeLayout
-        android:id="@+id/recyclerContainer"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/form_bg"
-        android:padding="12dp"
-        android:layout_margin="8dp"
-        android:visibility="gone">
+        android:padding="20dp">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <!-- Header -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
-            tools:listitem="@layout/item_post"
-            android:layout_centerInParent="true" />
+            android:orientation="vertical"
+            android:layout_marginTop="24dp">
 
-    </RelativeLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:src="@drawable/sniff_splash" />
 
-</LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Find sneakers and thrift items on Instagram by size"
+                android:textSize="14sp"
+                android:textColor="@color/grey"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/instagram_sans"/>
+        </LinearLayout>
+
+        <!-- Instagram Username -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Instagram Username"
+            android:fontFamily="@font/instagram_sans"
+            android:textSize="14sp"
+            android:layout_marginTop="24dp"
+            android:textColor="@color/grey"/>
+
+        <EditText
+            android:id="@+id/etUsername"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="sneakerstore"
+            android:background="@drawable/search_box_bg"
+            android:paddingHorizontal="12dp"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Posts to Scan -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Posts to scan"
+            android:textSize="14sp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/instagram_sans"
+            android:textColor="@color/grey"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:weightSum="4"
+            >
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="10"
+                android:textColor="@android:color/white"
+                android:background="@drawable/chip_bg_gradient_selector"
+                android:backgroundTint="@null"
+                android:layout_marginHorizontal="5dp"
+                android:id="@+id/btn10"
+                />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="25"
+                android:textColor="@android:color/white"
+                android:background="@drawable/chip_bg_gradient_selector"
+                android:backgroundTint="@null"
+                android:layout_marginHorizontal="5dp"
+                android:id="@+id/btn25"
+
+                />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="50"
+                android:textColor="@android:color/white"
+                android:background="@drawable/chip_bg_gradient_selector"
+                android:backgroundTint="@null"
+                android:layout_marginHorizontal="5dp"
+                android:id="@+id/btn50"
+
+                />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="100"
+                android:textColor="@android:color/white"
+                android:background="@drawable/chip_bg_gradient_selector"
+                android:backgroundTint="@null"
+                android:layout_marginHorizontal="5dp"
+                android:id="@+id/btn100"
+
+                />
+
+        </LinearLayout>
+
+        <!-- Size or Keyword -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Size or Keyword"
+            android:textSize="14sp"
+            android:fontFamily="@font/instagram_sans"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/grey"/>
+
+        <EditText
+            android:id="@+id/etKeyword"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="42, EU 42, US 9..."
+            android:background="@drawable/search_box_bg"
+            android:paddingHorizontal="12dp"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"/>
+
+
+        <!-- Search Button -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSearch"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Sniff!"
+            android:fontFamily="@font/instagram_sans"
+            android:textColor="@android:color/white"
+            android:background="@drawable/chip_bg_gradient_selector"
+            android:layout_marginTop="32dp"/>
+
+
+        <!-- Footer -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Not affiliated with Instagram"
+            android:textSize="12sp"
+            android:textColor="#999999"
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/instagram_sans"/>
+
+    </LinearLayout>
+</ScrollView>
