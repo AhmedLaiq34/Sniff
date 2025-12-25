@@ -128,15 +128,15 @@ Python 3.10+
 An Apify API token
 
 Steps
-## Clone the repository
+### Clone the repository
 git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
 cd backend
 
-## Create virtual environment
+### Create virtual environment
 python -m venv venv
 source venv/bin/activate   # Windows: venv\Scripts\activate
 
-## Install dependencies
+### Install dependencies
 pip install -r requirements.txt
 
 
