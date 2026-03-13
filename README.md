@@ -73,7 +73,7 @@ Workflow
 
 GitHub – Source control
 
-Render GitHub integration – Automatic backend deployment
+Vercel GitHub integration – Automatic backend deployment
 
 ### 🔍 How Instagram Data Is Retrieved
 
@@ -113,7 +113,7 @@ Designed as a lightweight client with all processing handled server-side
 
 Backend code is hosted in a GitHub repository
 
-Automatically deployed to Render
+Automatically deployed to Vercel
 
 Exposes a public HTTPS API endpoint
 
