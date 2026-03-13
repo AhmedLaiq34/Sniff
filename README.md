@@ -129,7 +129,7 @@ An Apify API token
 
 Steps
 ### Clone the repository
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
+git clone https://github.com/AhmedLaiq34/Sniff.git
 cd backend
 
 ### Create virtual environment
