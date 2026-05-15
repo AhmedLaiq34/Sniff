@@ -12,9 +12,30 @@ data class SearchRequest(
     val phrase: String
 )
 
+// ----- LLM Summarization Models -----
+data class PostSummaryItem(
+    val caption: String?,
+    val url: String,
+    val timestamp: String?
+)
+
+data class SummarizeRequest(
+    val username: String,
+    val keyword: String,
+    val posts: List<PostSummaryItem>
+)
+
+data class SummarizeResponse(
+    val status: String,
+    val summary: String
+)
 
 interface ApiService {
     @Headers("Content-Type: application/json")
     @POST("/api/scrape_instagram")
     fun searchCaptions(@Body request: SearchRequest): Call<CaptionResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("/api/summarize")
+    fun summarizeResults(@Body request: SummarizeRequest): Call<SummarizeResponse>
 }

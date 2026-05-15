@@ -42,3 +42,7 @@ google-services.json
 .env
 __pycache__/
 *.pyc
+
+# Sub-repositories and external resources
+/sniff-backend-vercel/
+/ai-agent-foundation-template/

@@ -1,5 +1,6 @@
 # backend/app.py
 from fastapi import FastAPI, HTTPException
+from openai import OpenAI
 from pydantic import BaseModel
 from apify_client import ApifyClient
 from typing import Optional, List
@@ -16,6 +17,12 @@ if not APIFY_TOKEN:
 
 client = ApifyClient(APIFY_TOKEN)
 
+# Groq LLM client (free tier - Llama 3.3 70B)
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+groq_client = OpenAI(
+    api_key=GROQ_API_KEY,
+    base_url="https://api.groq.com/openai/v1"
+)
 app = FastAPI(title="Instagram Phrase Finder API")
 
 # ----- Existing Models -----
@@ -132,6 +139,65 @@ def search_instagram(req: SearchRequest):
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Apify error: {str(e)}")
+
+# ----- LLM Summarization Models -----
+class PostSummary(BaseModel):
+    caption: Optional[str] = None
+    url: str
+    timestamp: Optional[str] = None
+
+class SummarizeRequest(BaseModel):
+    username: str
+    keyword: str
+    posts: List[PostSummary]
+
+class SummarizeResponse(BaseModel):
+    status: str
+    summary: str
+
+# ----- LLM Summarization Endpoint -----
+@app.post("/api/summarize", response_model=SummarizeResponse)
+def summarize_results(req: SummarizeRequest):
+    username = req.username.strip()
+    keyword = req.keyword.strip()
+
+    if not username or not keyword or not req.posts:
+        raise HTTPException(status_code=400, detail="username, keyword, and posts are required")
+
+    try:
+        # Build compact post list for prompt (limit to first 10 to save tokens)
+        posts_for_prompt = req.posts[:10]
+        posts_text = "\n".join([
+            f"- Post {i+1}: \"{(p.caption or 'No caption')[:150]}\" ({p.timestamp or 'unknown date'}) → {p.url}"
+            for i, p in enumerate(posts_for_prompt)
+        ])
+
+        prompt = f"""You are Sniff AI, an Instagram post analyst.
+A user searched for "{keyword}" in @{username}'s posts and found {len(req.posts)} matching posts.
+
+Here are the matches (up to 10):
+{posts_text}
+
+Write a concise 2-3 sentence insight. Mention key themes, time patterns, and a useful takeaway. Stay under 60 words."""
+
+        response = groq_client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=[
+                {"role": "system", "content": "You are a concise Instagram post analyst. Respond in 2-3 sentences only."},
+                {"role": "user", "content": prompt}
+            ],
+            max_tokens=200,
+            temperature=0.7,
+        )
+
+        summary = response.choices[0].message.content.strip()
+        return SummarizeResponse(status="success", summary=summary)
+
+    except Exception as e:
+        print(f"❌ Groq API error: {str(e)}")
+        # Graceful fallback — return a basic summary instead of failing
+        fallback = f"Found {len(req.posts)} posts mentioning \"{keyword}\" from @{username}."
+        return SummarizeResponse(status="fallback", summary=fallback)
     
 @app.get("/ping")
 def ping():
